@@ -1,0 +1,28 @@
+/* ResponsiveContainer.css */
+.parallax-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh; /* ตั้งค่าความสูงเริ่มต้น */
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      height: 30vh; /* ปรับความสูงเมื่อหน้าจอมีขนาด <= 768px */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      height: 20vh; /* ปรับความสูงเมื่อหน้าจอมีขนาด <= 480px */
+    }
+  }
+  
+  .navbar {
+    position: -webkit-sticky; /* สำหรับ Safari */
+    position: sticky;
+    top: 0;
+    z-index: 10; /* ให้ navbar อยู่เหนือเนื้อหาอื่นๆ */
+  }
+  

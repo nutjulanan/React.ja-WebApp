@@ -1,0 +1,17 @@
+/* PrintComponent.css */
+.printContainer {
+    font-family: 'Arial, sans-serif';
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .header {
+    text-align: center;
+  }
+  
+  .customerInfo, .servicesInfo {
+    margin: 20px 0;
+  }
+  
+  /* กำหนดรูปแบบอื่นๆ ตามต้องการ */
+  

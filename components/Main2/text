@@ -1,0 +1,76 @@
+import React, { useState, useEffect } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import '../CSS/Main2.css';
+
+const VITE_API_URL = import.meta.env.VITE_API_URL;
+
+export default function Main2({ onViewChange, onSelectService }) {
+  const [services, setServices] = useState([]);
+  const [hasMore, setHasMore] = useState(true);
+  const [expandedServiceId, setExpandedServiceId] = useState(null);
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
+
+  const fetchServices = async () => {
+    try {
+      const response = await fetch(`${VITE_API_URL}/fetchAllservice`);
+      if (!response.ok) throw new Error('Data fetch failed');
+      const data = await response.json();
+      setServices(data);
+      setHasMore(false); // กำหนดให้ไม่มีข้อมูลเพิ่มเติมในตอนแรก
+    } catch (error) {
+      console.error('Error fetching services:', error);
+    }
+  };
+
+  const fetchMoreData = async () => {
+    try {
+      const response = await fetch(`${VITE_API_URL}/fetchMoreServiceData`);
+      if (!response.ok) throw new Error('More data fetch failed');
+      const moreData = await response.json();
+      if (moreData.length === 0) {
+        setHasMore(false); // ถ้าไม่มีข้อมูลเพิ่มเติมให้กำหนด hasMore เป็น false
+      } else {
+        setServices(prevServices => [...prevServices, ...moreData]);
+      }
+    } catch (error) {
+      console.error('Error fetching more data:', error);
+    }
+  };
+
+  const handleExpandClick = (id) => {
+    const selected = services.find(service => service.id === id);
+    onSelectService(selected); // อัปเดต service ที่เลือก
+    setExpandedServiceId(expandedServiceId === id ? null : id);
+  };
+
+  return (
+    <div className="app-container">
+      <InfiniteScroll
+        dataLength={services.length}
+        next={fetchMoreData}
+        hasMore={hasMore}
+        loader={<h4>Loading...</h4>}
+        endMessage={<p style={{ textAlign: 'center' }}><b>You have seen it all</b></p>}
+      >
+        <div className="scrollcard">
+          {services.map((service) => (
+            <div
+              key={service.id}
+              className={`service-card rounded-full ${expandedServiceId === service.id ? 'expanded' : ''}`}
+              onClick={() => handleExpandClick(service.id)}
+            >
+              <div className="card-content">
+                <p className="service-description">{service.description}</p>
+                <h2 className="text-center text-lg font-semibold my-2">{service.service_name}</h2>
+                <p className="service-price">${service.unit_price}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </InfiniteScroll>
+    </div>
+  );
+}

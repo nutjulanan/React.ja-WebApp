@@ -1,0 +1,149 @@
+/* Main2.css - ปรับปรุงใหม่ */
+
+/* กำหนดสไตล์สำหรับ container ของบัตรบริการ ใช้ flexbox สำหรับการจัดวางบัตร */
+
+.scrollcard {
+ 
+    display: flex;
+    flex-wrap: wrap; /* บัตรจะขึ้นบรรทัดใหม่เมื่อไม่พอดีกับความกว้าง */
+    justify-content: center; /* จัดบัตรให้อยู่ตรงกลาง */
+    gap: 20px; /* ระยะห่างระหว่างบัตร */
+    padding: 20px; /* ระยะห่างภายในขอบของ container */
+    width: 100%; /* ความกว้างของ container */
+    height:580px; /* ความสูงตั้งค่าเป็น auto หรือตามที่ต้องการ */
+    position: relative; /* ใช้ในการจัดตำแหน่งบัตร */
+    overflow: auto; /* เพิ่ม overflow property เพื่อให้สามารถสกอได้ */
+    transition: transform 3.3s ease, overflow 10s ease; /* เพิ่มการเปลี่ยนแปลงอย่างนุ่มนวล */
+    
+    
+  }
+  
+  /* กำหนดสไตล์สำหรับบัตรบริการ */
+
+
+  .service-card {
+    width: auto; /* หรือคุณอาจต้องการใช้ความกว้างขั้นต่ำ min-width แทน */
+    display: inline-block; /* ทำให้บัตรมีขนาดตามเนื้อหาภายใน */
+    white-space: nowrap; /* ป้องกันข้อความจากการขึ้นบรรทัดใหม่ */
+    overflow: hidden; /* ป้องกันเนื้อหาจากการล้นออก */
+    background-color: #fff; /* สีพื้นหลังของบัตร */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงาของบัตร */
+    cursor: pointer; /* เปลี่ยนเมาส์เป็นรูปมือเมื่อ hover */
+    transition: box-shadow 1.3s ease, transform 1.3s ease, margin 1.3s ease; /* เพิ่มการเปลี่ยนแปลงอย่างนุ่มนวล */
+    text-overflow: ellipsis; /* แสดง "..." หากข้อความยาวเกินกว่าจะแสดงได้ครบ */
+  }
+  
+  
+  
+  /* ขยายบัตรเมื่อมีการ hover */
+  .service-card:hover {
+    transform: scale(1.05); /* ขยายขนาดบัตรเล็กน้อย */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* เพิ่มเงาเพื่อเน้นการ hover */
+    margin: 0 10px; /* ปรับระยะห่างเมื่อขยาย */
+    transition: box-shadow 1.3s ease, transform 1.3s ease, margin 1.3s ease; /* เพิ่มการเปลี่ยนแปลงอย่างนุ่มนวล */
+  }
+  
+  /* แสดงเนื้อหาเมื่อมีการ hover บนบัตร */
+  .service-card:hover .service-description,
+  .service-card:hover .service-price {
+    opacity: 1; /* แสดงเนื้อหา */
+    
+  }
+  .service-card:not(:last-child) {
+    margin-bottom: 20px;
+    
+}
+.service-card:not(:hover) {
+    transform: scale(1); /* ขยายขนาดบัตรกลับเป็นปกติ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 1.3s ease, transform 1.3s ease, margin 1.3s ease; /* เพิ่มการเปลี่ยนแปลงอย่างนุ่มนวล */
+}
+  
+  /* ซ่อนเนื้อหาเมื่อไม่มีการ hover */
+  .service-description,
+  .service-price {
+    opacity: 0; /* ซ่อนเนื้อหา */
+    transition: opacity 1.3s ease; /* การเปลี่ยนแปลงโปร่งใสอย่างนุ่มนวล */
+  }
+  
+  /* กำหนดพื้นที่ภายในบัตร */
+  .card-content {
+    display: flex; /* ใช้ flexbox สำหรับการจัดวาง */
+    flex-direction: column; /* จัดเนื้อหาในแนวตั้ง */
+    justify-content: center; /* จัดให้เนื้อหาอยู่ตรงกลางแนวตั้ง */
+    align-items: center; /* จัดให้เนื้อหาอยู่ตรงกลางแนวนอน */
+    height: 100%; /* กำหนดความสูงเต็มของ container เพื่อใช้กับ justify-content */
+    padding: 10px; /* ระยะห่างภายในบัตร */
+    transition: order 1.3s ease; /* เพิ่มการเปลี่ยนแปลงอย่างนุ่มนวล */
+  }
+  
+  
+  /* กำหนดสไตล์สำหรับหัวข้อของบัตร */
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-align: center; /* จัดให้ข้อความอยู่ตรงกลางแนวนอน */
+    width: 100%; /* กำหนดความกว้างเพื่อให้ text-align มีผล */
+    display: block; /* ให้ h2 ทำงานเหมือน block element */
+  }
+  
+  
+  /* ปรับปรุงสไตล์สำหรับหน้าจอขนาดเล็ก */
+  @media (max-width: 700px) {
+    .scrollcard {
+      flex-direction: column; /* จัดบัตรในแนวตั้ง */
+      align-items: center; /* จัดบัตรให้อยู่ตรงกลาง */
+      transition: transform 5.3s ease; /* เพิ่มการเปลี่ยนแปลงอย่างนุ่มนวล */
+    }
+  
+    .service-card {
+      width: 90%; /* ความกว้างของบัตรบนหน้าจอขนาดเล็ก */
+      transition: transform 3.3s ease; /* เพิ่มการเปลี่ยนแปลงอย่างนุ่มนวล */
+    }
+  }
+  
+  /* Animation สำหรับการปรากฏของบัตร */
+  @keyframes fadeIn {
+    from {
+      opacity: 0; /* เริ่มต้นที่โปร่งใส */
+      transform: translateY(20px); /* เริ่มต้นจากตำแหน่งล่างขึ้นมาบน */
+    }
+    to {
+      opacity: 1; /* ไม่โปร่งใส */
+      transform: translateY(0); /* ตำแหน่งปกติ */
+    }
+  }
+  
+  /* ใช้ animation ที่กำหนดไว้เมื่อบัตรปรากฏ */
+  .service-card {
+    animation: fadeIn 1.5s ease-out; /* ระยะเวลาและวิธีการเปลี่ยนแปลง */
+    transition: transform 1.3s ease; /* เพิ่มการเปลี่ยนแปลงอย่างนุ่มนวล */
+  }
+  
+  /* ตั้งค่าเวลาสำหรับ animation ถ้าจำเป็น */
+  :root {
+    --time: 40s; /* ตัวแปรสำหรับการตั้งค่าเวลาของ animation */
+  }
+  
+  .card-content:hover p {
+    order: 2; /* เปลี่ยนลำดับเพื่อให้ service description อยู่ด้านล่าง */
+    
+  }
+  
+  .card-content:hover h2 {
+    order: 1; /* เปลี่ยนลำดับเพื่อให้ service name อยู่ด้านบน */
+  }
+
+/* เพิ่ม animation เมื่อมีการเปลี่ยนแปลงขนาดของเนื้อหาในคอนเทนเนอร์ */
+.scrollcard > .service-card {
+  transition: transform 0.3s ease; /* เพิ่ม transition เพื่อให้การเปลี่ยนแปลงขนาดเนียนมน */
+}
+
+/* ขยายขนาดเนื้อหาเมื่อ hover */
+.scrollcard > .service-card:hover {
+  transform: scale(1.05);
+}
+
+  
+  
+  

@@ -1,0 +1,45 @@
+.car-repair-list {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .repair-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  
+  .create-repair input[type="text"] {
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+  
+  .create-repair button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .create-repair button:hover {
+    background-color: #0056b3;
+  }
+  
+  .create-repair button:active {
+    background-color: #0056b3;
+  }
+  
+  .create-repair button:focus {
+    outline: none;
+  }
+  

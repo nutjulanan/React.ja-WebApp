@@ -1,0 +1,122 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (max-width: 600px) {
+  .app-container {
+    flex-direction: column; /* อาจไม่จำเป็นถ้าคุณเริ่มต้นด้วย column */
+    align-items: stretch; /* ให้ลูกของ flex ยืดเต็มความกว้าง */
+  }
+}
+
+
+.navbar {
+  position: fixed; /* ทำให้ navbar คงที่ */
+  top: 0; /* ตั้งค่าให้อยู่ด้านบนสุดของหน้าจอ */
+  width: 100%; /* ให้ขยายครอบคลุมทั่วทั้งหน้าจอ */
+  z-index: 1000; /* ให้ navbar อยู่เหนือคอมโพเนนต์อื่นๆ */
+  display: flex;
+  justify-content: center; /* จัดกลางแนวนอน */
+  align-items: center; /* จัดกลางแนวตั้ง */
+  height: 60px; /* สามารถปรับความสูงตามความต้องการ */
+  
+}
+.menu-horizontal {
+  list-style-type: none; /* ลบรูปแบบ list แบบดั้งเดิม */
+  padding: 0; /* ลบ padding ภายใน */
+  margin: 0; /* ลบ margin ภายนอก */
+  display: flex; /* ใช้ flexbox สำหรับรายการ */
+  justify-content: center; /* จัดกลางรายการ */
+  align-items: center; /* จัดกลางแนวตั้ง */
+}
+
+/* ให้เนื้อหาหลักมีระยะห่างจาก navbar */
+.main-container {
+  margin-top: 60px; /* ปรับขนาดตามความสูงของ navbar ของคุณ */
+}
+
+.herologin {
+  display: flex; /* ใช้ flexbox */
+  align-items: center; /* จัดกลางแนวตั้ง */
+  justify-content: center; /* จัดกลางแนวนอน */
+  padding: 0; /* ลบ padding ภายใน */
+  margin: 0; /* ลบ margin ภายนอก */
+  width: 10px; /* กำหนดความกว้าง */
+}
+
+/* กำหนด style สำหรับ container ที่บรรจุ cards ทั้งหมด */
+.container_card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* จัดเป็น 2 คอลัมน์ในหน้าจอขนาดใหญ่ */
+  grid-gap: 20px; /* กำหนดช่องว่างระหว่าง cards */
+}
+
+/* Media query สำหรับหน้าจอขนาดเล็ก */
+@media (max-width: 600px) {
+  .container_card {
+    grid-template-columns: 1fr; /* จัดเป็น 1 คอลัมน์ในหน้าจอขนาดเล็ก */
+  }
+}
+
+/* Style สำหรับแต่ละ card */
+.card {
+  width: 100%; /* กำหนดความกว้าง */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* กำหนดเงาเล็กน้อย */
+  /* เพิ่ม style อื่นๆ ตามต้องการ */
+}
+
+/* กำหนดสไตล์ให้กับ <blockquote> ภายใน .card-body */
+.card-body blockquote {
+  text-align: justify; /* จัดให้ข้อความเสมอเส้น */
+  margin: 10px 20px; /* กำหนดช่องว่างด้านบนและล่าง, และขยายช่องว่างด้านซ้ายและขวา */
+  padding: 10px; /* กำหนดระยะห่างภายใน */
+  border-left: 5px solid #ccc; /* สร้างเส้นด้านซ้ายของ blockquote */
+  /* background-color: #f9f9f9;  */
+  /* สีพื้นหลัง */
+  /* font-style: italic; */
+   /* ตัวอักษรเอียง */
+}
+
+.h2-border {
+  border: 2px solid #B7E5B4; /* กำหนดสีและความหนาของขอบ */
+  padding: 10px; /* กำหนดระยะห่างภายในขอบ */
+  margin: 10px; /* กำหนดระยะห่างภายนอกขอบ */
+  border-radius: 15px; /* เพิ่มขอบโค้ง */
+}
+
+
+
